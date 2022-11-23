@@ -1,48 +1,36 @@
 package com.example.calculator;
 
-import com.example.calculator.service.exception.NotParameterNumberException;
+import com.example.calculator.service.CalculatorService;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class CalculatorTests {
-    private Integer num1;
-    private Integer num2;
 
-    @BeforeEach
-    public void setUp() {
-        num1 = 5;
-        num2 = 5;
+    CalculatorService calculatorService = new CalculatorService();
+
+    @ParameterizedTest
+    @CsvSource({"1, 1", "2, 2", "3, 3", "4, 4", "5, 5", "6, 6", "7, 7"})
+    public void addition(int num1, int num2) {
+        Assertions.assertEquals(calculatorService.addition(num1, num2), (num1 + num2));
     }
 
-    @Test
-    public void addition() {
-        Integer addition = num1 + num2;
-        Assertions.assertEquals(addition, (num1 + num2));
+    @ParameterizedTest
+    @CsvSource({"1, 1", "2, 2", "3, 3", "4, 4", "5, 5", "6, 6", "7, 7"})
+    public void subtraction(int num1, int num2) {
+        Assertions.assertEquals(calculatorService.subtraction(num1, num2), (num1 - num2));
     }
 
-    @Test
-    public void subtraction() {
-        if (num1 == null || num2 == null) {
-            throw new NotParameterNumberException("Какой-то из двух параметров (или оба) не поданы!");
-        }
-        Integer subtraction = num1 - num2;
-        Assertions.assertEquals(subtraction, (num1 - num2));
+    @ParameterizedTest
+    @CsvSource({"1, 1", "2, 2", "3, 3", "4, 4", "5, 5", "6, 6", "7, 7"})
+    public void multiplication(int num1, int num2) {
+        Assertions.assertEquals(calculatorService.multiplication(num1, num2), (num1 * num2));
     }
 
-    @Test
-    public void multiplication() {
-        Integer multiplication = num1 * num2;
-        Assertions.assertEquals(multiplication, (num1 * num2));
-    }
-
-    @Test
-    public void division() {
-        if (num1 == 0 || num2 == 0) {
-            throw new IllegalArgumentException("Деление на 0 запрещено!");
-        }
-        Integer division = num1 / num2;
-        Assertions.assertEquals(division, (num1 / num2));
+    @ParameterizedTest
+    @CsvSource({"1, 1", "2, 2", "3, 3", "4, 4", "5, 5", "6, 6", "7, 7"})
+    public void division(int num1, int num2) {
+        Assertions.assertEquals(calculatorService.division(num1, num2), (num1 / num2));
     }
 
 }

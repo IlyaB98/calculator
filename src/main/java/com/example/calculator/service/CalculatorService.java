@@ -9,34 +9,34 @@ public class CalculatorService {
         return "Добро пожаловать в калькулятор";
     }
 
-    public String addition(Integer num1, Integer num2) {
+    public int addition(Integer num1, Integer num2) {
         if (num1 == null || num2 == null) {
             throw new NotParameterNumberException("Какой-то из двух параметров (или оба) не поданы!");
         }
-        return num1 + " + " + num2 + " = " + (num1 + num2);
+        return num1 + num2;
     }
 
-    public String subtraction(Integer num1, Integer num2) {
+    public int subtraction(Integer num1, Integer num2) {
         if (num1 == null || num2 == null) {
             throw new NotParameterNumberException("Какой-то из двух параметров (или оба) не поданы!");
         }
-        return num1 + " - " + num2 + " = " + (num1 - num2);
+        return num1 - num2;
     }
 
-    public String multiplication(Integer num1, Integer num2) {
+    public int multiplication(Integer num1, Integer num2) {
         if (num1 == null || num2 == null) {
             throw new NotParameterNumberException("Какой-то из двух параметров (или оба) не поданы!");
         }
-        return num1 + " * " + num2 + " = " + (num1 * num2);
+        return num1 * num2;
     }
 
-    public String division(Integer num1, Integer num2) {
+    public int division(Integer num1, Integer num2) {
         if (num1 == null || num2 == null) {
             throw new NotParameterNumberException("Какой-то из двух параметров (или оба) не поданы!");
         }
-        if (num1 == 0 || num2 == 0) {
+        if (num2 == 0) {
             throw new IllegalArgumentException("Деление на 0 запрещено!");
         }
-        return num1 + " / " + num2 + " = " + (num1 / num2);
+        return num1 / num2;
     }
 }
